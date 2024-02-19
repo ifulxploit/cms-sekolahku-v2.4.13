@@ -9,9 +9,10 @@ $base_url = str_replace('install/','',$base_url);
 <head>
     <title>Installasi CMS Sekolahku</title>
         <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="<?=$base_url?>install/style.css">
-    <script type="text/javascript" src="<?=$base_url?>install/jquery.min.js"></script>
-    <script type="text/javascript" src="<?=$base_url?>install/FormWizard.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?=htmlspecialchars($base_url)?>install/style.css">
+        <script type="text/javascript" src="<?=htmlspecialchars($base_url)?>install/jquery.min.js"></script>
+        <script type="text/javascript" src="<?=htmlspecialchars($base_url)?>install/FormWizard.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $("#install").FormWizard({ submitButton: 'save' });
@@ -32,7 +33,7 @@ $base_url = str_replace('install/','',$base_url);
                     user_email: $('#user_email').val(),
                     user_password: $('#user_password').val()
                 };
-                $.post('<?=$base_url;?>/install/process.php', values, function(response) {
+                $.post('<?=htmlspecialchars($base_url);?>/install/process.php', values, function(response) {
                     $('#loading').hide();
                     var errors = typeof response == 'string' ? JSON.parse(response) : response;
                     if (!errors.length) {
@@ -60,7 +61,7 @@ $base_url = str_replace('install/','',$base_url);
 <body>
     <h2>Proses Installasi CMS Sekolahku</h2>
     <div id="main">
-        <img id="loading" style="display: none;" src="<?=$base_url?>install/loading.gif">
+    <img id="loading" style="display: none;" src="<?=htmlspecialchars($base_url)?>install/loading.gif">
         <div id="info"></div>
         <form id="install">
             <fieldset>
